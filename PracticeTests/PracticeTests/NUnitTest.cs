@@ -31,6 +31,35 @@ namespace PracticeTests
             driver.Url = "http://the-internet.herokuapp.com/checkboxes";
             IWebElement checkbox = driver.FindElement(By.XPath(".//*[@id='checkboxes']/input[1]"));
             checkbox.Click();
+            Assert.IsTrue(checkbox.Selected);
+        }
+
+        [Test]
+        public void VerifyCheckBoxIsChecked()
+        {
+            driver.Url = "http://the-internet.herokuapp.com/checkboxes";
+            IWebElement checkbox = driver.FindElement(By.XPath(".//*[@id='checkboxes']/input[1]"));
+            Assert.IsFalse(checkbox.Selected);
+        }
+
+        [Test]
+        public void VerifyCheckBoxIsNotChecked()
+        {
+            driver.Url = "http://the-internet.herokuapp.com/checkboxes";
+            IWebElement checkbox = driver.FindElement(By.XPath(".//*[@id='checkboxes']/input[2]"));
+            Assert.IsTrue(checkbox.Selected);
+        }
+
+        [Test]
+        public void CheckIfNotChecked()
+        {
+            driver.Url = "http://the-internet.herokuapp.com/checkboxes";
+            IWebElement checkbox = driver.FindElement(By.XPath(".//*[@id='checkboxes']/input[2]"));
+            if (checkbox.Selected is false)
+            {
+                checkbox.Click();
+            }
+            Assert.IsTrue(checkbox.Selected);
         }
 
         [TearDown]
