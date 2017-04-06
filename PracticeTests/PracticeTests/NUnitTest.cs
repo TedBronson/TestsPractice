@@ -25,6 +25,14 @@ namespace PracticeTests
             driver.Url = "http://the-internet.herokuapp.com/";
         }
 
+        [Test]
+        public void SelectCheckbox()
+        {
+            driver.Url = "http://the-internet.herokuapp.com/checkboxes";
+            IWebElement checkbox = driver.FindElement(By.XPath(".//*[@id='checkboxes']/input[1]"));
+            checkbox.Click();
+        }
+
         [TearDown]
         public void EndTest()
         {
